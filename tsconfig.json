@@ -23,8 +23,8 @@
       "ES2022",
       "dom"
     ],
-    "path": {
-      "@components/*": "./src/components/*"
+    "paths": {
+      "@components/*": ["./src/components/*"]
     }
   },
   "angularCompilerOptions": {
