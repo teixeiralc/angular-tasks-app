@@ -1,15 +1,41 @@
 <div class="flex flex-col justify-center">
   <app-header />
   <main class="w-[90%] max-w-4xl mx-auto my-0 grid grid-cols-[1fr_2fr] gap-8">
-    <ul>
+    <ul class="flex flex-col gap-2">
       <li>
-        <app-user />
+        <app-user
+          [userName]="users[0].name"
+          [userAvatar]="users[0].avatar"
+          [id]="users[0].id"
+          (select)="onSelectUser($event)"
+        />
+      </li>
+      <li>
+        <app-user
+          [userName]="users[1].name"
+          [userAvatar]="users[1].avatar"
+          [id]="users[1].id"
+          (select)="onSelectUser($event)"
+        />
+      </li>
+      <li>
+        <app-user
+          [userName]="users[2].name"
+          [userAvatar]="users[2].avatar"
+          [id]="users[2].id"
+          (select)="onSelectUser($event)"
+        />
+      </li>
+      <li>
+        <app-user
+          [userName]="users[3].name"
+          [userAvatar]="users[3].avatar"
+          [id]="users[3].id"
+          (select)="onSelectUser($event)"
+        />
       </li>
     </ul>
-    <ul>
-      <li>
-        <app-user />
-      </li>
-    </ul>
+
+    <app-tasks [selectedUserName]="selectedUserName ? selectedUserName : 'Select a user'" />
   </main>
 </div>
