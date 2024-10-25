@@ -3,6 +3,7 @@ import { HeaderComponent } from './components/header/header.component'
 import { TasksComponent } from './components/tasks/tasks.component'
 import { UserComponent } from './components/user/user.component'
 import { DUMMY_USERS } from './dummy-users'
+import { IUser } from './models/user'
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { DUMMY_USERS } from './dummy-users'
 })
 export class AppComponent {
   title = 'tasks-app'
-  users = DUMMY_USERS
+  users: IUser[] = DUMMY_USERS
 
   selectedUserName = undefined as string | undefined
 

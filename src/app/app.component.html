@@ -3,36 +3,16 @@
   <main class="w-[90%] max-w-4xl mx-auto my-0 grid grid-cols-[1fr_2fr] gap-8">
     <ul class="flex flex-col gap-2">
       <li>
-        <app-user
-          [userName]="users[0].name"
-          [userAvatar]="users[0].avatar"
-          [id]="users[0].id"
-          (select)="onSelectUser($event)"
-        />
+        <app-user [user]="users[0]" (select)="onSelectUser($event)" />
       </li>
       <li>
-        <app-user
-          [userName]="users[1].name"
-          [userAvatar]="users[1].avatar"
-          [id]="users[1].id"
-          (select)="onSelectUser($event)"
-        />
+        <app-user [user]="users[1]" (select)="onSelectUser($event)" />
       </li>
       <li>
-        <app-user
-          [userName]="users[2].name"
-          [userAvatar]="users[2].avatar"
-          [id]="users[2].id"
-          (select)="onSelectUser($event)"
-        />
+        <app-user [user]="users[2]" (select)="onSelectUser($event)" />
       </li>
       <li>
-        <app-user
-          [userName]="users[3].name"
-          [userAvatar]="users[3].avatar"
-          [id]="users[3].id"
-          (select)="onSelectUser($event)"
-        />
+        <app-user [user]="users[3]" (select)="onSelectUser($event)" />
       </li>
     </ul>
 
