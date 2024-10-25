@@ -1,5 +1,5 @@
 import { Component, computed, input, output } from '@angular/core'
-import { IUser } from '../../models/user'
+import { User } from '../../models/user'
 
 @Component({
   selector: 'app-user',
@@ -9,7 +9,8 @@ import { IUser } from '../../models/user'
   styleUrl: './user.component.css',
 })
 export class UserComponent {
-  user = input.required<IUser>()
+  user = input.required<User>()
+  selected = input.required<boolean>()
 
   select = output<string>()
 
