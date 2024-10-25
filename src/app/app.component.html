@@ -2,20 +2,17 @@
   <app-header />
   <main class="w-[90%] max-w-4xl mx-auto my-0 grid grid-cols-[1fr_2fr] gap-8">
     <ul class="flex flex-col gap-2">
+      @for (user of users; track user.id) {
       <li>
-        <app-user [user]="users[0]" (select)="onSelectUser($event)" />
+        <app-user [user]="user" (select)="onSelectUser($event)" />
       </li>
-      <li>
-        <app-user [user]="users[1]" (select)="onSelectUser($event)" />
-      </li>
-      <li>
-        <app-user [user]="users[2]" (select)="onSelectUser($event)" />
-      </li>
-      <li>
-        <app-user [user]="users[3]" (select)="onSelectUser($event)" />
-      </li>
+      }
     </ul>
 
-    <app-tasks [selectedUserName]="selectedUserName ? selectedUserName : 'Select a user'" />
+    @if (selectedUserName) {
+    <app-tasks [selectedUserName]="selectedUserName" />
+    } @else {
+    <h3 class="text-3xl font-medium">Selecione um usuário</h3>
+    }
   </main>
 </div>

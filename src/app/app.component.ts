@@ -16,7 +16,7 @@ export class AppComponent {
   title = 'tasks-app'
   users: IUser[] = DUMMY_USERS
 
-  selectedUserName = undefined as string | undefined
+  selectedUserName?: string | undefined
 
   onSelectUser(id: string) {
     this.selectedUserName = DUMMY_USERS.find((user) => user.id === id)?.name

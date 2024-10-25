@@ -3,7 +3,7 @@
     (click)="onSelectUser()"
     class="flex items-center gap-2 p-2 bg-[#433352] text-[#c3b3d1] border-none cursor-pointer w-full min-w-40 text-left hover:bg-[#9965dd] active:bg-[#9965dd] hover:text-[#150722] active:text-[#150722]"
   >
-    <img class="w-8 object-contain rounded-full shadow-sm" [src]="imgPath()" [alt]="userName()" />
-    <span class="m-0 p-0 text-sm font-normal">{{ userName() }}</span>
+    <img class="w-8 object-contain rounded-full shadow-sm" [src]="imgPath()" [alt]="user().avatar" />
+    <span class="m-0 p-0 text-sm font-normal">{{ user().name }}</span>
   </button>
 </div>
