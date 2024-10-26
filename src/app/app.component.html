@@ -1,6 +1,6 @@
 <app-header />
 <main class="w-[90%] max-w-4xl mx-auto my-0 grid grid-cols-[1fr_2fr] gap-8">
-  <ul class="flex flex-col gap-2">
+  <ul class="flex flex-col gap-3">
     @for (user of users; track user.id) {
     <li>
       <app-user [user]="user" [selected]="selectedUser?.id === user.id" (select)="onSelectUser($event)" />

@@ -1,8 +1,9 @@
-<section class="p-4 rounded-lg max-h-[60vh] overflow-auto bg-[#3a2c54]">
+<section class="px-4 py-8 rounded-lg max-h-[60vh] overflow-auto bg-[#3a2c54]">
   <div class="flex justify-between items-start mb-8 gap-6">
     <h2 class="text-2xl text-balance font-semibold">Tarefas de {{ selectedUserName() }}</h2>
     <menu class="m-0 p-0">
       <button
+        (click)="onStartNewTask()"
         class="cursor-pointer bg-[#9965dd] rounded-md border-none px-2 py-1 text-base text-[#0b0519] hover:bg-[#a565dd] active:bg-[#a565dd]"
       >
         +
@@ -21,3 +22,7 @@
     }
   </ul>
 </section>
+
+@if (isAddingTask()) {
+<app-new-task (cancel)="onCancelNewTask()" (add)="onAddNewTask($event)" />
+}

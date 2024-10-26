@@ -1,15 +1,19 @@
 <li>
-  <article class="p-4 text-[#25113d] bg-[#bf9ee5] rounded-lg">
-    <h2>{{ taskData().title }}</h2>
-    <time class="text-[#3c2c50] text-xs font-serif -mt-1 block">{{ taskData().dueDate }}</time>
-    <p>{{ taskData().summary }}</p>
-    <p class="text-right">
-      <button
-        (click)="onCompleteTask()"
-        class="text-sm cursor-pointer bg-[#380774] text-[#decdf2] rounde-sm py-2 px-6 rounded-md shadow-sm transition-all ease-linear duration-150 hover:bg-[#4a0774] hover:shadow-lg active:bg-[#4a0774] active:shadow-lg"
-      >
-        Concluir tarefa
-      </button>
-    </p>
-  </article>
+  <app-card>
+    <article class="px-4 py-8 text-[#25113d] bg-[#bf9ee5]">
+      <h2 class="text-xl text-balance font-semibold">{{ taskData().title }}</h2>
+      <time class="text-[#3c2c50] text-right text-base mt-1 mb-4 block">{{
+        taskData().dueDate | date : 'dd/MM/yyyy'
+      }}</time>
+      <p class="mb-8">{{ taskData().summary }}</p>
+      <p class="text-right">
+        <button
+          (click)="onCompleteTask()"
+          class="text-sm cursor-pointer bg-[#380774] text-[#decdf2] rounde-sm py-2 px-6 rounded-md shadow-sm transition-all ease-linear duration-150 hover:bg-[#4a0774] hover:shadow-lg active:bg-[#4a0774] active:shadow-lg"
+        >
+          Concluir tarefa
+        </button>
+      </p>
+    </article>
+  </app-card>
 </li>

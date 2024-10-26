@@ -1,4 +1,4 @@
-<div class="rounded-lg shadow-sm overflow-hidden">
+<app-card>
   <button
     (click)="onSelectUser()"
     [class.active]="selected()"
@@ -7,4 +7,4 @@
     <img class="w-8 object-contain rounded-full shadow-sm" [src]="imgPath()" [alt]="user().avatar" />
     <span class="m-0 p-0 text-sm font-normal">{{ user().name }}</span>
   </button>
-</div>
+</app-card>

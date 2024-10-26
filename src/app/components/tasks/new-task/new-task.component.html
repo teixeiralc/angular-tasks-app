@@ -1,0 +1,59 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div (click)="onCancelNewTask()" class="bg-black bg-opacity-90 fixed top-0 left-0 w-full h-screen"></div>
+<dialog
+  open
+  class="w-[90%] max-w-[30rem] bg-[#433352] rounded-md border-none shadow-md overflow-hidden p-4 md:p-8 top-20"
+>
+  <h2 class="text-[#d0c2e1] text-xl font-semibold pb-4">Adicionar tarefa</h2>
+  <form class="flex flex-col gap-4" (ngSubmit)="onSubmit()">
+    <p>
+      <label class="block font-bold text-sm text-[#d0c2e1]" for="title">Título</label>
+      <input
+        class="w-full p-[0.15rem_0.25rem] rounded-md border-[1px_solid_#ab9ac0] bg-[#d0c2e1]"
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="enteredTitle"
+      />
+    </p>
+
+    <p>
+      <label class="block font-bold text-sm text-[#d0c2e1]" for="summary">Descrição</label>
+      <textarea
+        class="w-full p-[0.15rem_0.25rem] rounded-md border-[1px_solid_#ab9ac0] bg-[#d0c2e1]"
+        id="summary"
+        rows="5"
+        name="summary"
+        [(ngModel)]="enteredSummary"
+      ></textarea>
+    </p>
+
+    <p>
+      <label class="block font-bold text-sm text-[#d0c2e1]" for="due-date">Vencimento</label>
+      <input
+        class="w-full p-[0.15rem_0.25rem] rounded-md border-[1px_solid_#ab9ac0] bg-[#d0c2e1]"
+        type="date"
+        id="due-date"
+        name="due-date"
+        [(ngModel)]="enteredDate"
+      />
+    </p>
+
+    <p class="m-[1rem_0_0] flex justify-end gap-1">
+      <button
+        class="cursor-pointer border-none py-1 px-5 rounded-sm bg-transparent text-[#bdadcf] hover:text-[#d0c2e1] active:text-[#d0c2e1]"
+        type="button"
+        (click)="onCancelNewTask()"
+      >
+        Cancelar
+      </button>
+      <button
+        class="cursor-pointer border-none py-1 px-5 rounded-sm bg-[#9c73ca] shadow-sm transition-all ease-linear duration-100 hover:bg-[#895cce] hover:shadow-md active:bg-[#895cce] active:shadow-md text-[#d0c2e1] font-medium"
+        type="submit"
+      >
+        Atribuir tarefa
+      </button>
+    </p>
+  </form>
+</dialog>
