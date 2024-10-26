@@ -1,28 +1,30 @@
-<section class="px-4 py-8 rounded-lg max-h-[60vh] overflow-auto bg-[#3a2c54]">
-  <div class="flex justify-between items-start mb-8 gap-6">
-    <h2 class="text-2xl text-balance font-semibold">Tarefas de {{ selectedUserName() }}</h2>
+<section class="max-h-[70vh] overflow-auto rounded-lg bg-[#3a2c54] px-4 py-8">
+  <div class="mb-8 flex items-start justify-between gap-6">
+    <h2 class="text-balance text-2xl font-semibold">Tarefas de {{ selectedUserName() }}</h2>
     <menu class="m-0 p-0">
       <button
         (click)="onStartNewTask()"
-        class="cursor-pointer bg-[#9965dd] rounded-md border-none px-2 py-1 text-base text-[#0b0519] hover:bg-[#a565dd] active:bg-[#a565dd]"
+        class="cursor-pointer rounded-md border-none bg-[#9965dd] px-2 py-1 text-base text-[#0b0519] hover:bg-[#a565dd] active:bg-[#a565dd]"
       >
         +
       </button>
     </menu>
   </div>
 
-  <ul class="mx-4 p-0 flex flex-col gap-4 max-height-[50vh] overflow-auto">
-    @if (selectedUserTasks().length) { @for (task of selectedUserTasks(); track task.id) {
-    <app-task [taskData]="task" (completeTask)="onCompleteTask($event)" />
-    } } @else {
-    <p>
-      O usuário selecionado não tem tarefas atribuídas a ele. <br />
-      Tente atribuir uma tarefa no botão "+" acima!
-    </p>
+  <ul class="max-height-[50vh] mx-4 flex flex-col gap-4 overflow-auto p-0">
+    @if (selectedUserTasks().length) {
+      @for (task of selectedUserTasks(); track task.id) {
+        <app-task [taskData]="task" />
+      }
+    } @else {
+      <p>
+        O usuário selecionado não tem tarefas atribuídas a ele. <br />
+        Tente atribuir uma tarefa no botão "+" acima!
+      </p>
     }
   </ul>
 </section>
 
 @if (isAddingTask()) {
-<app-new-task (close)="onCloseNewTask()" [selectedUserId]="selectedUserId()" />
+  <app-new-task (close)="onCloseNewTask()" [selectedUserId]="selectedUserId()" />
 }

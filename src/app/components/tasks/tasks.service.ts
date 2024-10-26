@@ -7,6 +7,12 @@ import { Tasks } from '../../models/tasks'
 export class TasksService {
   private tasks = signal<Tasks[]>(DUMMY_TASKS)
 
+  constructor() {
+    const storedTasks = localStorage.getItem('tasks')
+
+    if (storedTasks) this.tasks.set(JSON.parse(storedTasks))
+  }
+
   getUserTasks(userId: string) {
     return this.tasks().filter((task) => task.userId === userId)
   }
@@ -22,9 +28,15 @@ export class TasksService {
       },
       ...tasks,
     ])
+    this.storeTasks()
   }
 
   removeTask(taskId: string) {
     this.tasks.update((tasks) => tasks.filter((task) => task.id !== taskId))
+    this.storeTasks()
+  }
+
+  private storeTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks()))
   }
 }
