@@ -1,9 +1,7 @@
 import { Component, computed, input, signal } from '@angular/core'
-import { DUMMY_TASKS } from '../../dummy-tasks'
-import NewTaskFormValues from '../../models/newTaskFormvalues'
-import { Tasks } from '../../models/tasks'
 import { NewTaskComponent } from './new-task/new-task.component'
 import { TaskComponent } from './task/task.component'
+import { TasksService } from './tasks.service'
 
 @Component({
   selector: 'app-tasks',
@@ -13,39 +11,25 @@ import { TaskComponent } from './task/task.component'
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  tasks = signal<Tasks[]>(DUMMY_TASKS)
   isAddingTask = signal(false)
-
   selectedUserName = input.required<string>()
   selectedUserId = input.required<string>()
 
+  constructor(private taskService: TasksService) {}
+
   selectedUserTasks = computed(() => {
-    return this.tasks().filter((task) => task.userId === this.selectedUserId())
+    return this.taskService.getUserTasks(this.selectedUserId())
   })
 
-  onCompleteTask(id: string) {
-    this.tasks.update((tasks) => tasks.filter((task) => task.id !== id))
+  onCompleteTask(taskId: string) {
+    this.taskService.removeTask(taskId)
   }
 
   onStartNewTask() {
     this.isAddingTask.set(true)
   }
 
-  onCancelNewTask() {
-    this.isAddingTask.set(false)
-  }
-
-  onAddNewTask(taskData: NewTaskFormValues) {
-    this.tasks.update((tasks) => [
-      {
-        id: new Date().getTime().toString(),
-        userId: this.selectedUserId(),
-        title: taskData.title,
-        summary: taskData.summary,
-        dueDate: taskData.duedate,
-      },
-      ...tasks,
-    ])
+  onCloseNewTask() {
     this.isAddingTask.set(false)
   }
 }

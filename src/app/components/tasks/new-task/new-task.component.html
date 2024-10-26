@@ -1,6 +1,6 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<div (click)="onCancelNewTask()" class="bg-black bg-opacity-90 fixed top-0 left-0 w-full h-screen"></div>
+<div (click)="onCloseNewTask()" class="bg-black bg-opacity-90 fixed top-0 left-0 w-full h-screen"></div>
 <dialog
   open
   class="w-[90%] max-w-[30rem] bg-[#433352] rounded-md border-none shadow-md overflow-hidden p-4 md:p-8 top-20"
@@ -10,6 +10,7 @@
     <p>
       <label class="block font-bold text-sm text-[#d0c2e1]" for="title">Título</label>
       <input
+        required
         class="w-full p-[0.15rem_0.25rem] rounded-md border-[1px_solid_#ab9ac0] bg-[#d0c2e1]"
         type="text"
         id="title"
@@ -21,6 +22,7 @@
     <p>
       <label class="block font-bold text-sm text-[#d0c2e1]" for="summary">Descrição</label>
       <textarea
+        required
         class="w-full p-[0.15rem_0.25rem] rounded-md border-[1px_solid_#ab9ac0] bg-[#d0c2e1]"
         id="summary"
         rows="5"
@@ -32,6 +34,7 @@
     <p>
       <label class="block font-bold text-sm text-[#d0c2e1]" for="due-date">Vencimento</label>
       <input
+        required
         class="w-full p-[0.15rem_0.25rem] rounded-md border-[1px_solid_#ab9ac0] bg-[#d0c2e1]"
         type="date"
         id="due-date"
@@ -44,7 +47,7 @@
       <button
         class="cursor-pointer border-none py-1 px-5 rounded-sm bg-transparent text-[#bdadcf] hover:text-[#d0c2e1] active:text-[#d0c2e1]"
         type="button"
-        (click)="onCancelNewTask()"
+        (click)="onCloseNewTask()"
       >
         Cancelar
       </button>
